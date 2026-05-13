@@ -1,0 +1,9 @@
+# Front
+FROM node:lts-alpine
+WORKDIR /home/node
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+EXPOSE 5173
+# "--", "--host" --> accéder au server Vite depuis l'extérieur du container
+CMD ["npm", "run", "dev", "--", "--host"]
