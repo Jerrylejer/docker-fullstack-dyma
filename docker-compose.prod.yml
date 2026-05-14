@@ -38,7 +38,16 @@ services:
       context: ./reverse-proxy
       dockerfile: Dockerfile.prod
     ports:
+    # port http
       - "80:80"
+    # port https
+      - "443:443"
+    volumes:
+      - type: bind
+      # path certificat TLS sur le VPS
+        source: etc/letsencrypt
+      # copie dans le empl dans le container
+        target: etc/letsencrypt
     restart: unless-stopped
     depends_on:
       - api
