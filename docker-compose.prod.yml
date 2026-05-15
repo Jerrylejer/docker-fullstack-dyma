@@ -45,9 +45,9 @@ services:
     volumes:
       - type: bind
       # path certificat TLS sur le VPS
-        source: etc/letsencrypt
+        source: /etc/letsencrypt
       # copie dans le empl dans le container
-        target: etc/letsencrypt
+        target: /etc/letsencrypt
     restart: unless-stopped
     depends_on:
       - api
